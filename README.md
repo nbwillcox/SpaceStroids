@@ -1,6 +1,6 @@
 # SpaceStroids
 
-A free, retro-flavored asteroid shooter with modern neon graphics and a head nod to classic vector arcade games. Drift through wrap-around space on pure inertia, shatter splitting crystal rocks, dodge saucers, and take down giant boss encounters.
+A free, retro-flavored asteroid shooter with modern neon graphics and a head nod to classic vector arcade games. Turn, thrust and drift through wrap-around space on pure inertia, shatter splitting crystal rocks, dodge saucers, and take down giant boss encounters.
 
 **Play it in your browser:** https://nbwillcox.github.io/SpaceStroids/
 
@@ -10,8 +10,8 @@ Everything is generated in code: sprites are vector-drawn on the fly, and all so
 
 | Action | Keys |
 | --- | --- |
-| Thrust (twin-stick, pure inertia: no friction, so counter-thrust to stop) | `W` `A` `S` `D` or arrow keys |
-| Aim | Mouse (or `Q` / `E` to turn if you have no mouse) |
+| Turn the ship | `A` / `D` or `←` / `→` |
+| Thrust forward / reverse thrust (pure inertia: no friction, so counter-thrust to stop) | `W` / `S` or `↑` / `↓` |
 | Fire (hold to auto-fire) | `Space` or left mouse button |
 | Hyperspace (teleport, short cooldown, small risk of a bad jump) | `Shift`, `H` or right mouse button |
 | Pause | `P` or `Esc` |

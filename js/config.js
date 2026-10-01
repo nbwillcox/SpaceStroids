@@ -6,6 +6,7 @@
     H: 540,
     REPO: 'https://github.com/nbwillcox/SpaceStroids',
     ACCEL: 560,
+    TURN_RATE: 4.6,
     MAX_SPEED: 400,
     SHIP_SCALE: 0.5,
     SHIP_R: 11,

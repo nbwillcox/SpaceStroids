@@ -164,9 +164,10 @@
     let ax = 0, ay = 0, fire = false, hyper = false;
     if (this.demo) { const c = this.autopilot(dt); ax = c.ax; ay = c.ay; p.ang = c.aim; fire = c.fire; hyper = c.hyper; }
     else {
-      ax = (I.right ? 1 : 0) - (I.left ? 1 : 0); ay = (I.down ? 1 : 0) - (I.up ? 1 : 0);
-      if (I.mouseActive) p.ang = Math.atan2(I.mouseY - p.y, I.mouseX - p.x);
-      else p.ang += ((I.rotR ? 1 : 0) - (I.rotL ? 1 : 0)) * 5 * dt;
+      // classic controls: left/right turn the ship, up thrusts forward, down thrusts backward
+      p.ang += ((I.right ? 1 : 0) - (I.left ? 1 : 0)) * C.TURN_RATE * dt;
+      const f = (I.up ? 1 : 0) - (I.down ? 1 : 0);
+      ax = Math.cos(p.ang) * f; ay = Math.sin(p.ang) * f;
       fire = I.fire; hyper = I.takeHyper();
     }
     const l = Math.hypot(ax, ay);

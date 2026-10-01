@@ -86,7 +86,7 @@
     const col = 'rgba(160,215,255,0.8)';
     ctx.save();
     txt(ctx, 'SPACESTROIDS', cx1, top, 15 * sc, '#ffffff', 'center', 900, 'rgba(255,150,90,0.9)');
-    const help = ['THRUST', 'W A S D  /  ARROWS', 'AIM', 'MOUSE  (Q E TURNS)', 'FIRE', 'SPACE  /  LEFT CLICK', 'HYPERSPACE', 'SHIFT  /  RIGHT CLICK', 'PAUSE', 'P  /  ESC'];
+    const help = ['TURN', 'A D  /  ← →', 'THRUST / REVERSE', 'W S  /  ↑ ↓', 'FIRE', 'SPACE  /  LEFT CLICK', 'HYPERSPACE', 'SHIFT  /  RIGHT CLICK', 'PAUSE', 'P  /  ESC'];
     help.forEach((s, i) => txt(ctx, s, cx1, top + 44 * sc + i * 19 * sc, (i % 2 ? 12 : 10) * sc, i % 2 ? col : '#ff7a5d', 'center', i % 2 ? 700 : 800));
     txt(ctx, 'TOP PILOTS', cx2, top, 15 * sc, '#ffffff', 'center', 900, 'rgba(255,150,90,0.9)');
     G.scores.list.slice(0, 7).forEach((r, i) => txt(ctx, (i + 1) + '. ' + r.name + '  ' + U.fmt(r.score), cx2, top + 34 * sc + i * 22 * sc, 13 * sc, i === 0 ? '#ffd24a' : col, 'center', 700));
