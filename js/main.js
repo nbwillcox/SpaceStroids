@@ -90,6 +90,7 @@
       ctx.globalAlpha = 1; ctx.globalCompositeOperation = 'source-over';
     }
     HUD.draw(ctx, Game);
+    if (HUD.reticle) HUD.reticle(ctx, Game);
     if (FX.flash > 0) { ctx.fillStyle = 'rgba(' + FX.flashColor + ',' + Math.min(0.75, FX.flash * 0.7) + ')'; ctx.fillRect(0, 0, W, H); }
     ctx.restore();
     ctx.strokeStyle = 'rgba(55,230,255,0.45)'; ctx.lineWidth = 1.5;

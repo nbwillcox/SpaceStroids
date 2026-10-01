@@ -1,7 +1,7 @@
-/* Classic ship controls: W/Up thrust forward, S/Down reverse thrust, A/D or Left/Right turn. Space or left mouse fires, Shift / H / right mouse = hyperspace. */
+/* Ship controls: W/Up thrust forward, S/Down reverse thrust, A/D or Left/Right turn, or aim with the mouse. Space or left mouse fires, Shift / H / right mouse = hyperspace. */
 (function (G) {
   'use strict';
-  const I = { left: false, right: false, up: false, down: false, fire: false, mouseX: 0, mouseY: 0, mouseActive: false, _hyper: false, _pause: false, _any: false };
+  const I = { left: false, right: false, up: false, down: false, fire: false, mouseX: 0, mouseY: 0, mouseActive: false, mouseSeen: false, _hyper: false, _pause: false, _any: false };
   const GAME_KEYS = new Set(['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Space', 'KeyA', 'KeyD', 'KeyW', 'KeyS', 'KeyQ', 'KeyE', 'KeyH', 'ShiftLeft', 'ShiftRight']);
 
   I.takeHyper = () => { const b = I._hyper; I._hyper = false; return b; };
@@ -22,6 +22,7 @@
     if (typing(e.target)) return;
     const c = e.code;
     setKey(c, true);
+    if (c === 'KeyA' || c === 'KeyD' || c === 'KeyQ' || c === 'KeyE' || c === 'ArrowLeft' || c === 'ArrowRight') I.mouseActive = false; // turning keys take over from the mouse
     if ((c === 'ShiftLeft' || c === 'ShiftRight' || c === 'KeyH') && !e.repeat) I._hyper = true;
     else if ((c === 'KeyP' || c === 'Escape') && !e.repeat) I._pause = true;
     if (!e.repeat) I._any = true;
@@ -45,7 +46,9 @@
     if (!v) return;
     I.mouseX = (e.clientX - v.ox) / v.s;
     I.mouseY = (e.clientY - v.oy) / v.s;
-    if (e.movementX !== 0 || e.movementY !== 0) I.mouseActive = true;
+    I.mouseSeen = true;
+    // a deliberate mouse move hands aiming back to the mouse (ignored while a turn key is held)
+    if (Math.abs(e.movementX) + Math.abs(e.movementY) >= 3 && !I.left && !I.right) I.mouseActive = true;
   });
 
   G.input = I;

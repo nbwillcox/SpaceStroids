@@ -51,6 +51,30 @@
     HUD.banner(ctx, g);
   };
 
+  /* red targeting reticle at the mouse cursor, plus a faint aim line from the ship */
+  HUD.reticle = function (ctx, g) {
+    const I = G.input;
+    if (g.demo || !I.mouseSeen || !g.player.alive || G.main.mode !== 'play') return;
+    const x = U.clamp(I.mouseX, 0, W), y = U.clamp(I.mouseY, 0, H), p = g.player, t = g.time;
+    const pulse = 1 + Math.sin(t * 8) * 0.06, live = I.mouseActive ? 1 : 0.6;
+    ctx.save();
+    ctx.globalAlpha = 0.28 * live;
+    ctx.strokeStyle = '#ff3b3b'; ctx.lineWidth = 1.5; ctx.setLineDash([6, 8]);
+    ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(x, y); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.globalAlpha = live;
+    ctx.shadowColor = '#ff2a2a'; ctx.shadowBlur = 12;
+    ctx.strokeStyle = '#ff3b3b'; ctx.lineWidth = 2.4;
+    ctx.beginPath(); ctx.arc(x, y, 13 * pulse, 0, Math.PI * 2); ctx.stroke();
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(x - 24, y); ctx.lineTo(x - 8, y); ctx.moveTo(x + 8, y); ctx.lineTo(x + 24, y);
+    ctx.moveTo(x, y - 24); ctx.lineTo(x, y - 8); ctx.moveTo(x, y + 8); ctx.lineTo(x, y + 24);
+    ctx.stroke();
+    ctx.fillStyle = '#ff6a6a'; ctx.beginPath(); ctx.arc(x, y, 2.2, 0, Math.PI * 2); ctx.fill();
+    ctx.restore();
+  };
+
   HUD.banner = function (ctx, g) {
     const b = g.banner;
     if (!b) return;
@@ -86,7 +110,7 @@
     const col = 'rgba(160,215,255,0.8)';
     ctx.save();
     txt(ctx, 'SPACESTROIDS', cx1, top, 15 * sc, '#ffffff', 'center', 900, 'rgba(255,150,90,0.9)');
-    const help = ['TURN', 'A D  /  ← →', 'THRUST / REVERSE', 'W S  /  ↑ ↓', 'FIRE', 'SPACE  /  LEFT CLICK', 'HYPERSPACE', 'SHIFT  /  RIGHT CLICK', 'PAUSE', 'P  /  ESC'];
+    const help = ['AIM / TURN', 'MOUSE  or  A D  /  ← →', 'THRUST / REVERSE', 'W S  /  ↑ ↓', 'FIRE', 'SPACE  /  LEFT CLICK', 'HYPERSPACE', 'SHIFT  /  RIGHT CLICK', 'PAUSE', 'P  /  ESC'];
     help.forEach((s, i) => txt(ctx, s, cx1, top + 44 * sc + i * 19 * sc, (i % 2 ? 12 : 10) * sc, i % 2 ? col : '#ff7a5d', 'center', i % 2 ? 700 : 800));
     txt(ctx, 'TOP PILOTS', cx2, top, 15 * sc, '#ffffff', 'center', 900, 'rgba(255,150,90,0.9)');
     G.scores.list.slice(0, 7).forEach((r, i) => txt(ctx, (i + 1) + '. ' + r.name + '  ' + U.fmt(r.score), cx2, top + 34 * sc + i * 22 * sc, 13 * sc, i === 0 ? '#ffd24a' : col, 'center', 700));

@@ -10,7 +10,7 @@ Everything is generated in code: sprites are vector-drawn on the fly, and all so
 
 | Action | Keys |
 | --- | --- |
-| Turn the ship | `A` / `D` or `←` / `→` |
+| Turn / aim the ship | Mouse (follow the red reticle), or `A` / `D` / `←` / `→` to turn by key |
 | Thrust forward / reverse thrust (pure inertia: no friction, so counter-thrust to stop) | `W` / `S` or `↑` / `↓` |
 | Fire (hold to auto-fire) | `Space` or left mouse button |
 | Hyperspace (teleport, short cooldown, small risk of a bad jump) | `Shift`, `H` or right mouse button |
