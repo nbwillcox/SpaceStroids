@@ -16,6 +16,10 @@ Everything is generated in code: sprites are vector-drawn on the fly, and all so
 | Hyperspace (teleport, short cooldown, small risk of a bad jump) | `Shift`, `H` or right mouse button |
 | Pause | `P` or `Esc` |
 
+### On a phone or tablet
+
+Play in landscape. A floating stick on the left turns the ship (left/right), thrusts (up) and reverses (down); **FIRE** (hold) and **HYPER** are on the right. The pause button opens the menu. The on-screen controls appear on touch devices automatically; Settings has size, opacity and a left-handed layout. Use your browser's *Add to Home Screen* to install it as a full-screen app.
+
 ## Gameplay
 
 - The arena wraps on every edge: ship, rocks, bullets and saucers all pop out the opposite side.
