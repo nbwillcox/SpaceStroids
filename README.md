@@ -20,6 +20,10 @@ Everything is generated in code: sprites are vector-drawn on the fly, and all so
 
 Play in landscape. A floating stick on the left turns the ship (left/right), thrusts (up) and reverses (down); **FIRE** (hold) and **HYPER** are on the right. The pause button opens the menu. The on-screen controls appear on touch devices automatically; Settings has size, opacity and a left-handed layout. Use your browser's *Add to Home Screen* to install it as a full-screen app.
 
+### Controller
+
+Plug in a gamepad and it just works: left stick or D-pad turns and thrusts, **A / RT** fires, **B / X** is hyperspace, **Start** pauses. In menus the D-pad / left stick moves the highlight, **A** selects, **B** goes back and **Start** plays or resumes. **Settings -> Controller** has a dead-zone slider and lets you remap every button.
+
 ## Gameplay
 
 - The arena wraps on every edge: ship, rocks, bullets and saucers all pop out the opposite side.
